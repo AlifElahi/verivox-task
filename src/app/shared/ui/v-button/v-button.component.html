@@ -1,0 +1,13 @@
+<button
+  mat-button
+  [ngClass]="buttonStyles[type]"
+  [disabled]="disabled"
+  (click)="action.emit()"
+  disableRipple="true"
+>
+  <ng-container *ngTemplateOutlet="btnText"></ng-container>
+</button>
+
+<ng-template #btnText>
+  <ng-content></ng-content>
+</ng-template>

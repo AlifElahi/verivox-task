@@ -1,0 +1,20 @@
+// Primary Colors
+$primary-orange: #ff6600e3;
+$primary-green: #1eb93a;
+// Gray Scale
+$gray-dark: #6c757d;
+$gray-light: #f1f1f1;
+$gray: #f3f3f3;
+$gray-medium: #adb5bd;
+// Black and White
+$black: #000000;
+$black-light: #333;
+$white: #ffffff;
+
+// Blue Shades
+$blue-light: #f3f7fd;
+$blue-dark: #003366;
+
+// Hover and Accent Colors
+$hover-orange: darken($primary-orange, 10%);
+$hover-gray: lighten($gray-dark, 10%);

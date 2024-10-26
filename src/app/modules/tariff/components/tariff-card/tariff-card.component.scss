@@ -1,0 +1,242 @@
+@import '../../../../../styles/breakpoint-mixin';
+@import '../../../../../styles/colors';
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tariff-card {
+  width: 96%;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  margin-bottom: 16px;
+  &:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+}
+
+/* Tariff Card Specific Styling */
+.tariff-card-content {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr; /* Adjust the first column for the index */
+  gap: 16px;
+  align-items: center;
+}
+
+/* 1st Column: Tariff Index in a Box */
+.tariff-index-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 100%;
+  border-right: 1px solid $black-light;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.tariff-index {
+  color: $black-light;
+}
+
+/* 2nd Column: Tariff Name */
+.tariff-name h4 {
+  font-size: 1.4rem;
+  margin: 0;
+  color: $black-light;
+}
+
+/* 3rd Column: Download/Upload Speeds */
+.tariff-speed {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.speed-container {
+  justify-content: flex-start;
+}
+
+.speed-label {
+  font-size: 1rem;
+  text-align: left;
+  margin-right: 8px;
+  color: $black-light;
+}
+.speed-text-box {
+  display: flex;
+}
+.speed-box {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-color: $gray;
+  border-radius: 0px 20px 20px 0px;
+  padding: 6px 12px;
+  min-width: 115px;
+  font-size: 0.9rem;
+
+  .arrow-icon {
+    padding: 0px 10px;
+    margin-right: 5px;
+    font-size: 1.2rem;
+    border-right: 1px solid $black-light;
+  }
+
+  .down {
+    color: $primary-orange;
+  }
+
+  .up {
+    color: $primary-green;
+  }
+}
+
+/* 4th Column: Price and CTA Button */
+.tariff-price {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+
+  .tariff-price-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    margin: 0;
+    color: $black-light;
+    align-self: flex-end;
+  }
+
+  app-v-button {
+    align-self: flex-end;
+    margin: 8px 0px 0px 0px;
+  }
+  .desktop-button-text {
+    display: inline;
+  }
+
+  .mobile-button-text {
+    display: none;
+  }
+}
+
+/* 5th Column: Benefits List */
+.tariff-benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: $black-light;
+  }
+}
+
+// Responsive design for Mobile
+@include breakpoint('mobile') {
+  .tariff-price {
+    .tariff-price-content {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      flex-grow: 1;
+    }
+    h3 {
+      font-size: 1.2rem;
+      align-self: center;
+      justify-self: flex-start;
+      margin-right: 20px;
+    }
+    app-v-button {
+      align-self: center;
+      margin: 0px;
+    }
+    .desktop-button-text {
+      display: none;
+    }
+
+    .mobile-button-text {
+      display: inline;
+    }
+  }
+  :host ::ng-deep app-v-button {
+    button {
+      min-width: 0px;
+      width: 25px !important; /* Default button width */
+      height: 80px !important; /* Default height */
+      padding: 0px; /* Default padding */
+    }
+  }
+
+  .tariff-index-box {
+    border: none;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 0.7rem;
+    width: 0px;
+  }
+  .tariff-card-content {
+    grid-template-columns: 0.1fr 1fr 0.6fr 1.4fr; /* Remove the benefits column on tablets */
+    gap: 1px;
+  }
+  .tariff-name h4 {
+    font-size: 1rem;
+    margin: 0;
+  }
+  .tariff-benefits {
+    display: none; /* Hide the benefits section on tablet screens */
+  }
+  .speed-label {
+    display: none;
+  }
+  .speed-box {
+    align-items: center;
+    flex-direction: column;
+    background-color: transparent;
+    padding: 0px;
+    min-width: 0px;
+    font-size: 0.9rem;
+  }
+  #upload {
+    display: none;
+  }
+}
+// Responsive design for tablets
+@include breakpoint('tablet') {
+  .tariff-card-content {
+    grid-template-columns: 0.3fr 1fr 1fr 1fr; /* Remove the benefits column on tablets */
+  }
+
+  .tariff-benefits {
+    display: none; /* Hide the benefits section on tablet screens */
+  }
+  .tariff-name h4 {
+    font-size: 1rem;
+    margin: 0;
+  }
+  .speed-container {
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+  .speed-label {
+    display: none;
+  }
+  .tariff-index-box {
+    border: none;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 0.7rem;
+  }
+}

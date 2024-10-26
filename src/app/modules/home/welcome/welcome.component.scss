@@ -1,0 +1,47 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/breakpoint-mixin';
+.welcome-container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px;
+  gap: 20px;
+
+  .welcome-card,
+  .tariff-card {
+    display: flex;
+    justify-content: center;
+    height: 300px;
+    width: 40%;
+  }
+
+  @include breakpoint('mobile') {
+    flex-direction: column;
+    gap: 10px;
+    .welcome-card,
+    .tariff-card {
+      display: flex;
+      justify-content: center;
+      height: 200px;
+      width: 40%;
+    }
+  }
+}
+
+.tariff-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 10px;
+  .action {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}

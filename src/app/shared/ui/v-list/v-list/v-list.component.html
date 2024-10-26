@@ -1,0 +1,37 @@
+<div class="list">
+  <cdk-virtual-scroll-viewport itemSize="100"  class="list-container">
+
+  <div class="list-header">
+    <h2>{{ title }}</h2>
+    <span class="spacer"></span>
+    <app-v-dropdown
+      [options]="sortOptions"
+      (selectionChange)="onSortSelectionChange($event)"
+      label="Sort By"
+    >
+    </app-v-dropdown>
+  </div>
+  @if (isLoading()) {
+    <mat-progress-bar mode="indeterminate" class="horizontal-loader">
+    </mat-progress-bar>
+  }
+    <!-- <mat-list class="list-container">
+      @for (item of data(); track item; let index = $index ) {
+        <app-custom-component
+          [item]="item"
+          [component]="itemComponent"
+          [index]="index"
+        ></app-custom-component>
+      }
+    </mat-list> -->
+
+      <app-custom-component
+        *cdkVirtualFor="let item of data(); let index = index"
+        [item]="item"
+        [component]="itemComponent"
+        [index]="index+1"
+      ></app-custom-component>
+    </cdk-virtual-scroll-viewport>
+
+ 
+</div>

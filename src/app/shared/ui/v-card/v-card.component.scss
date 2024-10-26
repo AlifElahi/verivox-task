@@ -1,0 +1,21 @@
+@import '../../../../styles/colors';
+
+.v-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 4px;
+  height: 100%;
+  width: 100%;
+  min-height: 120px;
+  min-width: 220px;
+
+  mat-card-content {
+    flex-grow: 1;
+  }
+}
+.title-styled {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  padding: 10px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid $gray-light;
+}

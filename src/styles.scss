@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@import './styles/colors';
+
+// Define custom primary palette with required shades
+$primary-orange: mat.define-palette(
+  (
+    50: #fff3e0,
+    100: #ffe0b2,
+    200: #ffcc80,
+    300: #ffb74d,
+    400: #ffa726,
+    500: $primary-orange,
+    // Main color
+    600: darken($primary-orange, 10%),
+    700: darken($primary-orange, 15%),
+    800: darken($primary-orange, 20%),
+    900: darken($primary-orange, 25%),
+    contrast: (
+      50: $black,
+      100: $black,
+      200: $black,
+      300: $black,
+      400: $black,
+      500: $white,
+      600: $white,
+      700: $white,
+      800: $white,
+      900: $white,
+    ),
+  )
+);
+
+$accent-color: mat.define-palette(mat.$blue-palette);
+
+$custom-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary-orange,
+      accent: $accent-color,
+    ),
+  )
+);
+
+@include mat.all-component-themes($custom-theme);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  color: $black-light;
+}
+

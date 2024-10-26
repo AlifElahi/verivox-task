@@ -1,0 +1,70 @@
+<div class="tariff-card">
+  <app-v-card>
+    <div class="tariff-card-content">
+      <!-- 1st Column: Tariff Index in a Box -->
+      <div class="tariff-index-box">
+        <span class="tariff-index">{{ index }}</span>
+      </div>
+
+      <!-- 2nd Column: Tariff Name and rating -->
+
+      <div class="tariff-name">
+        <h4>
+          {{ data.tariffName }}
+          <span class="tariff-rating">({{ data.rating.toFixed(1) }})</span>
+        </h4>
+      </div>
+
+      <!-- 3rd Column: Download and Upload Speeds  -->
+      <div class="tariff-speed">
+        <span class="speed-container">
+          <span class="speed-label">Download</span>
+          <span class="speed-text-box">
+            <div class="speed-box">
+              <span class="speed-text"
+                ><i class="arrow-icon down">&#x2193;</i
+                >{{ data.downloadSpeed }}</span
+              ><span>&nbsp; Mbit/s</span>
+            </div>
+          </span>
+        </span>
+        <span id="upload" class="speed-container">
+          <span class="speed-label">Upload</span>
+          <span class="speed-text-box">
+            <div class="speed-box">
+              <span class="speed-text"
+                ><i class="arrow-icon up">&#x2191;</i
+                >{{ data.uploadSpeed }}</span
+              ><span>&nbsp; Mbit/s</span>
+            </div>
+          </span>
+        </span>
+      </div>
+
+      <!-- 4th Column: Benefits -->
+      <div class="tariff-benefits">
+        <ul>
+          <!-- Display up to 3 benefits -->
+          @for (benefit of data.benefits.slice(0, 3); track $index) {
+            <li>{{ benefit }}</li>
+          }
+          <!-- Conditionally show "..." if there are more than 3 benefits -->
+          @if (data.benefits.length > 3) {
+            <li>...</li>
+          }
+        </ul>
+      </div>
+
+      <!-- 5th Column: Price and CTA Button -->
+      <div class="tariff-price">
+        <div class="tariff-price-content">
+          <h3>{{ data.price | currency: 'EUR' }}</h3>
+          <app-v-button>
+            <span class="desktop-button-text">To Tariff ></span>
+            <span class="mobile-button-text">></span></app-v-button
+          >
+        </div>
+      </div>
+    </div>
+  </app-v-card>
+</div>

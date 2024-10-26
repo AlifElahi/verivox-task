@@ -1,0 +1,58 @@
+/* Container for the entire list */
+@import '../../../../../styles/breakpoint-mixin';
+@import '../../../../../styles/colors';
+
+:host {
+  width: 100%;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+/* Header with title and dropdown */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $gray-medium;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.list-header h2 {
+  font-size: 1.5rem;
+  color: $black-light;
+  margin: 0;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.horizontal-loader {
+  margin: 8px 0;
+  height: 4px; /* Adjust the height of the loader */
+
+}
+
+app-v-dropdown {
+  min-width: 180px;
+  margin-top: 10px;
+}
+/* Styling for each dynamic component */
+app-custom-component {
+  display: flex;
+  justify-content: center;
+}
+
+.list-container {
+  width: 100%;
+  height: 91vh;
+  justify-content: center;
+}
+
+

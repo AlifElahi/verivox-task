@@ -1,0 +1,40 @@
+@import '../../../../styles/colors';
+
+:host {
+  display: inline-block;
+}
+button {
+  width: 100%;
+  text-transform: uppercase;
+}
+.mat-mdc-button:not(:disabled) {
+  color: $primary-orange;
+}
+.mat-raised-button:not(:disabled) {
+  color: $white;
+  background-color: $primary-orange;
+}
+
+.mat-mdc-outlined-button:not(:disabled) {
+  color: $primary-orange;
+  border: 1px solid $primary-orange;
+  border-radius: 4px;
+}
+.mat-mdc-unelevated-button:not(:disabled) {
+  color: $white;
+  background-color: $primary-orange;
+  padding: 0 16px;
+}
+button.selected {
+  background-color: $primary-orange;
+  color: $white;
+}
+.main-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+button.mat-mdc-outlined-button:disabled {
+  border: 1px solid $gray-light;
+}

@@ -1,0 +1,25 @@
+@import '../../../../styles/colors';
+
+.spacer {
+  flex: 1;
+}
+
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa; /* Light gray background */
+  color: $primary-orange;
+  font-weight: 600;
+  min-width: 300px;
+  z-index: 400;
+  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.2);
+}
+
+.toolbar img {
+  margin: 0 16px;
+}

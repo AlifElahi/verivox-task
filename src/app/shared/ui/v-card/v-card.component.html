@@ -1,0 +1,13 @@
+<mat-card class="v-card">
+  <!-- Conditionally show the card title if provided -->
+  @if (title) {
+    <mat-card-title [ngClass]="{ 'title-styled': title }">{{
+      title
+    }}</mat-card-title>
+  }
+
+  <!-- Content projection for card body content -->
+  <mat-card-content>
+    <ng-content></ng-content>
+  </mat-card-content>
+</mat-card>
