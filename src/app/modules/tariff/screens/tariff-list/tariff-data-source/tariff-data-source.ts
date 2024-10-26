@@ -6,9 +6,16 @@ import { TariffDataService } from '../../../services/tariff-data-service/tariff-
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * Tariff data source class
+ * It extends the ListDataSource class and provides an API to fetch tariffs
+ * 
+ * custom sort can also be set from here.
+ */
 export class TariffDataSource extends ListDataSource<Tariff> {
   constructor(private tariffService: TariffDataService) {
-    super((page: number) => tariffService.getTariffs(page)); // Use the service's paginated data fetching method
+    super((page: number) => tariffService.getTariffs(page)); 
   }
 
 
