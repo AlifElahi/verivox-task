@@ -1,20 +1,25 @@
-<div class="welcome-container">
-  <!-- First Card -->
+<div class="welcome-page">
+  <!-- Welcome Text -->
+  <div class="welcome-text">
+    <h1>Welcome to Verivox FE Project</h1>
+    <p>Explore our tariff options and learn more about the design and technical decisions we've made.</p>
+    <p>
+      <a href="path-to-adr" target="_blank" class="adr-link">View Architecture Decision Record (ADR)</a>
+    </p>
+  </div>
 
-  <app-v-card class="welcome-card">
-    <span> Welcome to Verivox FE Take-home Task </span>
-  </app-v-card>
-
-  <!-- Second Card -->
-
-  <app-v-card class="tariff-card" title="Tariff List">
-    <span class="tariff-card-content">
-      <span>Let's check out the tariff list</span>
-      <span class="action">
-        <app-v-button type="raised" routerLink="/tariff-list">
-          Go to Tariff List
-        </app-v-button>
+    <app-v-card class="tariff-card" title="Explore the Tariff List">
+      <span class="tariff-card-content">
+        <p>Browse through our tariff options and find the best plan that suits you.</p>
+        <span class="action">
+          <app-v-button type="raised" routerLink="/tariff-list">
+            Go to Tariff List
+          </app-v-button>
+        </span>
       </span>
-    </span>
-  </app-v-card>
+    </app-v-card>
+  
+
+  <!-- Centered Card: Tariff List Navigation -->
+
 </div>

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TariffCardComponent } from './tariff-card.component';
+import { mockTariffData } from '../../mocks/tariff-data-mock';
 
 describe('TariffCardComponent', () => {
   let component: TariffCardComponent;
@@ -13,7 +14,8 @@ describe('TariffCardComponent', () => {
 
     fixture = TestBed.createComponent(TariffCardComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    component.data= mockTariffData[0];
+    component.index=0
   });
 
   it('should create', () => {

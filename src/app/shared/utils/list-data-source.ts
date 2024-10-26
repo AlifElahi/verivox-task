@@ -1,84 +1,120 @@
 import { Signal, computed, signal } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { ListFetchResponse } from '../../modules/tariff/models/tariff.model';
+import { Observable, ReplaySubject } from 'rxjs';
 
-export interface SortParams<T> {
-  attribute: keyof T;
-  direction: 'asc' | 'desc';
-}
-/**
- * Class to manage the data source for the list
- * This class should be used as a base class for all list components data source.
- * 
- * @template T - The type of the data
- * 
- * 
- * Example of it's use can be found in the TariffListComponent and TariffDataSource.
- */
+
 export class ListDataSource<T> {
   /**
-   * Signals to store the data
+   * An observable that emits the current data for the list.
    */
-  private dataSignal = signal<T[]>([]); 
+  private dataSignal = signal<T[]>([]);
   /**
-   * Signal to track loading state
+   * An observable that emits the loading state of the list data source.
    */
-  private loadingSignal = signal<boolean>(false); 
+  private loadingSignal = signal<boolean>(false);
+  /**
+   * An observable that emits the total number of pages available for the data.
+   */
+  private totalPagesSignal = signal<number>(0);
+  /**
+   * An observable that emits the current page number.
+   */
+  private currentPageSignal = signal<number>(1);
 
-  private numberOfPagesFetched = 0; // Counter to track the number of times the data is loaded
-
-  constructor(private dataService: Observable<T[]>) {
-    this.loadData(); // Load data when the data source is initialized
+  constructor(private dataService: (page: number) => Observable<ListFetchResponse<T>>) {
+    this.loadData();
   }
 
-  /**
-   * Load data from the service and update the loading state
-   */
-  private loadData(): void {
-    this.numberOfPagesFetched++;
-    this.loadingSignal.set(true); // Set loading to true
-    this.dataService.subscribe({
-      next: (data) => {
-        this.dataSignal.set([...(this.dataSignal() || []), ...data]); // up the signal with the fetched data
-        this.loadingSignal.set(false); // Set loading to false after data is loaded
+/**
+ * Loads data for the specified page and updates internal signals for data, current page,
+ * and total pages. Emits a signal when loading starts and completes.
+ *
+ * @param page - The page number to load data for. Defaults to the current page.
+ * @returns An observable that emits when the data loading is complete.(for easy of testing)
+ */
+   loadData(page: number = this.currentPageSignal()): Observable<void> {
+    const replySubject = new ReplaySubject<void>;
+    this.loadingSignal.set(true);
+    this.dataService(page).subscribe({
+      next: (res) => {
+        this.dataSignal.set([...(this.dataSignal()||[]),...res.data]);
+        this.currentPageSignal.set(res.numberOfCurrentPage);
+        this.totalPagesSignal.set(res.numberOfTotalPage);
+        this.loadingSignal.set(false);
+        replySubject.next();
+        replySubject.complete();
       },
       error: () => {
-        this.loadingSignal.set(false); // Set loading to false in case of an error
+        this.loadingSignal.set(false);
+        replySubject.next();
+        replySubject.complete();
       },
     });
+
+    return replySubject.asObservable();
   }
 
+  
   /**
-   * Method to get the data signal, used by components to subscribe
-   * @returns Signal<T[]> - The signal containing the data
+   * Gets the list of data.
+   *
+   * @returns - A signal that emits an array of data items.
    */
   getData(): Signal<T[]> {
     return computed(() => this.dataSignal());
   }
 
-  // Method to get the loading state signal
+  /**
+   * Gets the loading state of the list data source.
+   *
+   * @returns - A signal that emits `true` if the data is loading, `false` otherwise.
+   */
   getLoadingState(): Signal<boolean> {
     return computed(() => this.loadingSignal());
   }
 
-/**
- * Method to apply sorting to the data and update the data signal
- * @param sortParams - The sort parameters to preform the sorting
- */
-  applySorting(sortParams: SortParams<T>): void {
-    const sortedData = this.sort(sortParams, this.dataSignal());
-    this.dataSignal.set([...sortedData]);
-  }
   /**
-   * Method to sort the data
-   * @param sortParams  sort parameters like property name and direction
-   * @param data data from signal on which the sorting is to be performed
-   * @returns data after sorting
+   * Gets the current page number of the data.
+   *
+   * @returns - A signal that emits the current page number.
    */
-  sort(sortParams: SortParams<T>, data: T[]): T[] {
-    data.sort((a, b) => {
+
+  getCurrentPage(): Signal<number> {
+    return computed(() => this.currentPageSignal());
+  }
+
+  /**
+   * Gets the total number of pages available for the data.
+   *
+   * @returns - A signal that emits the total number of pages.
+   */
+  getTotalPages(): Signal<number> {
+    return computed(() => this.totalPagesSignal());
+  }
+
+  /**
+   * Sorts the data with the given SortParams and updates the data signal.
+   *
+   * @param sortParams - The SortParams to use for sorting.
+   */
+  applySorting(sortParams: SortParams<T>): void {
+    const sortedData = this.sort(sortParams, [...this.dataSignal()]);
+    this.dataSignal.set(sortedData);
+  }
+
+/**
+ * Sorts an array of data based on the specified SortParams.
+ *
+ * @param sortParams - An object containing the attribute to sort by and the direction of sorting ('asc' or 'desc').
+ * @param data - The array of data to be sorted.
+ * @returns A new array sorted according to the specified attribute and direction.
+ */
+   sort(sortParams: SortParams<T>, data: T[]): T[] {
+    return data.sort((a, b) => {
       const valueA = a[sortParams.attribute];
       const valueB = b[sortParams.attribute];
+      if (valueA == null || valueB == null) return 0;
 
       if (sortParams.direction === 'asc') {
         return valueA > valueB ? 1 : valueA < valueB ? -1 : 0;
@@ -86,16 +122,33 @@ export class ListDataSource<T> {
         return valueA < valueB ? 1 : valueA > valueB ? -1 : 0;
       }
     });
-    
-    return data;
   }
 
- /**
-  * Method to reset the data source
-  */
-  reset(): void {
-    this.numberOfPagesFetched = 0;
-    this.dataSignal.set([]);
-    this.loadData(); // Reload the data from the service
+  /**
+   * Increments the current page number and fetches the data for the new page number by calling loadData,
+   * if the new page number is within the range of total pages.
+   */
+  nextPage(): void {
+    if (this.currentPageSignal() < this.totalPagesSignal()) {
+      this.loadData(this.currentPageSignal() + 1);
+    }
   }
+
+
+
+  /**
+   * Resets the data source by clearing the current data and setting the page to the first page.
+   * This will also reload data for the first page by calling loadData.
+   */
+
+  reset(): void {
+    this.currentPageSignal.set(1);
+    this.dataSignal.set([]);
+    this.loadData(this.currentPageSignal());
+  }
+}
+
+export interface SortParams<T> {
+  attribute: keyof T;
+  direction: 'asc' | 'desc';
 }

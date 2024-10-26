@@ -9,6 +9,7 @@ describe('VCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [VCardComponent]
+
     })
     .compileComponents();
     

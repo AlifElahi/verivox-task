@@ -8,7 +8,7 @@ import { VCardComponent } from '../../shared/ui/v-card/v-card.component';
 import { VListModule } from '../../shared/ui/v-list/v-list.module';
 
 @NgModule({
-  declarations: [TariffListComponent, TariffCardComponent],
+  declarations: [TariffListComponent],
   imports: [CommonModule, VCardComponent, VButtonComponent, VListModule],
   exports: [TariffRoutingModule],
 })

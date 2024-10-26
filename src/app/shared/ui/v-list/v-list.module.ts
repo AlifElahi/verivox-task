@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { CustomComponentComponent } from './v-list/custom-component/custom-component.component';
 import { CustomComponentDirective } from './v-list/custom-component/custom-component.directive';
-import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgModule } from '@angular/core';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -18,7 +17,6 @@ import { VListComponent } from './v-list/v-list.component';
     CommonModule,
     ScrollingModule,
     VDropdownComponent,
-    MatListModule,
     CommonModule,
     MatProgressBarModule,
   ],

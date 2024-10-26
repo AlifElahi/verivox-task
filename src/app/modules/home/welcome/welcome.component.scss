@@ -1,47 +1,77 @@
 @import '../../../../styles/colors';
 @import '../../../../styles/breakpoint-mixin';
-.welcome-container {
-  height: 100%;
+
+
+.welcome-page {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
-  padding: 0px 20px;
-  gap: 20px;
+  justify-content: space-around;
+  height: 100%;
+  background-image: url('https://images.unsplash.com/photo-1560841458-e084f4f4f3b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDR8fGJhY2tncm91bmR8ZW58MHx8fHwxNjY3OTUxNjM5&ixlib=rb-1.2.1&q=80&w=1920');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
 
-  .welcome-card,
-  .tariff-card {
-    display: flex;
-    justify-content: center;
-    height: 300px;
-    width: 40%;
+.welcome-text {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 40px;
+  color: #333;
+  max-width: 600px;
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: $text-black;
   }
 
-  @include breakpoint('mobile') {
-    flex-direction: column;
-    gap: 10px;
-    .welcome-card,
-    .tariff-card {
-      display: flex;
-      justify-content: center;
-      height: 200px;
-      width: 40%;
+  p {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 10px 0;
+  }
+
+  .adr-link {
+    color: #ff6600; /* Verivox brand color */
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #e65c00;
     }
   }
 }
 
-.tariff-card-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  gap: 10px;
-  .action {
+.tariff-card {
+  position: relative;
+  z-index: 2;
+  max-width: 400px;
+  height: 300px;
+
+  .tariff-card-content {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 1rem;
+    color: #555;
+    height: 100%;
   }
+
+  .action {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-right: 5px;
+  }
+
+}
+:host ::ng-deep app-v-card .v-card {
+  border-radius: 20px;
 }
