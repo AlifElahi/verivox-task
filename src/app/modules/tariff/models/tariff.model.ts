@@ -9,11 +9,7 @@ export interface Tariff {
 }
 
 
-export interface ListFetchResponse<T>{
-  data: T[]
-  numberOfTotalPage: number,
-  numberOfCurrentPage: number
-}
+
 export interface TariffFetchResponse{
   data: Tariff[]
   numberOfTotalPage: number,

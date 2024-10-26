@@ -1,5 +1,6 @@
 /* Container for the entire list */
 @import '../../../../../styles/colors';
+@import '../../../../../styles/breakpoint-mixin';
 
 :host {
   width: 100%;
@@ -55,3 +56,16 @@ app-custom-component {
 }
 
 
+@include breakpoint('mobile') {
+  .list-header {
+    flex-direction: column;
+  
+  }
+  .list-header h2 {
+    align-self: flex-start;
+  }
+  app-v-dropdown {
+    min-width: unset;
+    align-self: flex-end;
+  }
+}

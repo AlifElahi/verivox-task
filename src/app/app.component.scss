@@ -16,7 +16,14 @@ app-v-header {
 }
 #main-content-container {
   flex-grow: 1; // Allow the content to grow and fill the remaining space  // Add padding equal to the header height
-  overflow-y: auto;
+  overflow:hidden;
   height: 90vh;
   background-color: $blue-light;
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+
+}
+
+#main-content-container ::-webkit-scrollbar { /* Chrome, Safari, Opera */
+  display: none;
 }

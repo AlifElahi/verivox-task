@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { Tariff } from '../../models/tariff.model';
 import { VButtonComponent } from '../../../../shared/ui/v-button/v-button.component';
 import { VCardComponent } from '../../../../shared/ui/v-card/v-card.component';
@@ -8,7 +9,7 @@ import { VCardComponent } from '../../../../shared/ui/v-card/v-card.component';
 @Component({
   selector: 'app-tariff-card',
   standalone: true,
-  imports:[VCardComponent,VButtonComponent,CommonModule],
+  imports:[VCardComponent,VButtonComponent,CommonModule,MatTooltipModule],
   templateUrl: './tariff-card.component.html',
   styleUrl: './tariff-card.component.scss',
 })

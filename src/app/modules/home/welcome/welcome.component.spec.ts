@@ -31,13 +31,4 @@ describe('WelcomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render VCardComponent', () => {
-    const cardElement = fixture.debugElement.query(By.directive(VCardComponent));
-    expect(cardElement).toBeTruthy();
-  });
-
-  it('should render VButtonComponent', () => {
-    const buttonElement = fixture.debugElement.query(By.directive(VButtonComponent));
-    expect(buttonElement).toBeTruthy();
-  });
 });

@@ -1,11 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DropDownOption, VDropdownComponent } from '../../v-dropdown/v-dropdown.component';
-import { ListDataSource, SortParams } from '../../../utils/list-data-source';
 
 import { CommonModule } from '@angular/common';
+import { ListDataSource } from '../../../utils/list-data-source';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { SortConfig } from '../v-list';
+import { SortParams } from '../../../utils/list';
 import { VListComponent } from './v-list.component';
 import { signal } from '@angular/core';
 

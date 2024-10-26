@@ -8,7 +8,7 @@ import { delay } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TariffDataService {
-  private readonly totalItems = 60; 
+  private readonly totalItems = 600; 
   private readonly itemsPerPage = 10;
 
   // Method to simulate an API call that fetches tariffs for a given page
@@ -17,9 +17,9 @@ export class TariffDataService {
       index: (page - 1) * this.itemsPerPage + index + 1,
       tariffName: `Tariff ${(page - 1) * this.itemsPerPage + index + 1}`,
       rating: Math.floor(Math.random() * 5) + 1,
-      benefits: ['Unlimited Calls', 'Free SMS', 'International Roaming']
+      benefits: ['Unlimited Calls', 'Free SMS', 'International Roaming', 'Young People Access']
         .sort(() => 0.5 - Math.random())
-        .slice(0, Math.floor(Math.random() * 3) + 1),
+        .slice(0, Math.floor(Math.random() * 5) + 1),
       price: Math.floor(Math.random() * 80) + 20,
       downloadSpeed: Math.floor(Math.random() * 500) + 50,
       uploadSpeed: Math.floor(Math.random() * 100) + 10

@@ -1,8 +1,9 @@
 import { Component, Input, OnInit, Signal, signal } from '@angular/core';
-import { ListDataSource, SortParams } from '../../../utils/list-data-source';
 
 import { DropDownOption } from '../../v-dropdown/v-dropdown.component';
+import { ListDataSource } from '../../../utils/list-data-source';
 import { SortConfig } from '../v-list';
+import { SortParams } from '../../../utils/list';
 
 @Component({
   selector: 'app-v-list',

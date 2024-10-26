@@ -1,8 +1,19 @@
 import { Signal, computed, signal } from '@angular/core';
 
-import { ListFetchResponse } from '../../modules/tariff/models/tariff.model';
-import { Observable, ReplaySubject } from 'rxjs';
 
+import { Observable, ReplaySubject } from 'rxjs';
+import { ListFetchResponse, SortParams } from './list';
+
+
+/**
+ * A data source that provides data for a list from the service 
+ * 
+ * This is a base class which should be extended by all data sources used in list views.
+ * 
+ * 
+ * 
+ *This approach will reduce duplicate code, make it easier to test or maintain.
+ */
 
 export class ListDataSource<T> {
   /**
@@ -37,7 +48,7 @@ export class ListDataSource<T> {
     const replySubject = new ReplaySubject<void>;
     this.loadingSignal.set(true);
     this.dataService(page).subscribe({
-      next: (res) => {
+      next: (res: ListFetchResponse<T>) => {
         this.dataSignal.set([...(this.dataSignal()||[]),...res.data]);
         this.currentPageSignal.set(res.numberOfCurrentPage);
         this.totalPagesSignal.set(res.numberOfTotalPage);
@@ -148,7 +159,3 @@ export class ListDataSource<T> {
   }
 }
 
-export interface SortParams<T> {
-  attribute: keyof T;
-  direction: 'asc' | 'desc';
-}

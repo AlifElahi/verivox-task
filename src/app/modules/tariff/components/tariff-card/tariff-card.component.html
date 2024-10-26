@@ -11,7 +11,7 @@
       <div class="tariff-name">
         <h4>
           {{ data.tariffName }}
-          <span class="tariff-rating">({{ data.rating.toFixed(1) }})</span>
+          <span class="tariff-rating">({{ data.rating.toFixed(1) }}☆)</span>
         </h4>
       </div>
 
@@ -48,9 +48,9 @@
           @for (benefit of data.benefits.slice(0, 3); track $index) {
             <li>{{ benefit }}</li>
           }
-          <!-- Conditionally show "..." if there are more than 3 benefits -->
+          <!-- Conditionally show "More..." if there are more than 3 benefits -->
           @if (data.benefits.length > 3) {
-            <li>...</li>
+            <li>More...</li>
           }
         </ul>
       </div>
@@ -59,10 +59,9 @@
       <div class="tariff-price">
         <div class="tariff-price-content">
           <h3>{{ data.price | currency: 'EUR' }}</h3>
-          <app-v-button>
+          <app-v-button matTooltip="No action is attached yet" >
             <span class="desktop-button-text">To Tariff ></span>
-            <span class="mobile-button-text">></span></app-v-button
-          >
+            <span class="mobile-button-text">></span></app-v-button>
         </div>
       </div>
     </div>

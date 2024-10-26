@@ -1,6 +1,6 @@
-import { ListDataSource, SortParams } from './list-data-source';
+import { ListFetchResponse, SortParams } from './list';
 
-import { ListFetchResponse } from '../../modules/tariff/models/tariff.model';
+import { ListDataSource } from './list-data-source';
 import { of } from 'rxjs';
 
 interface MockItem {
