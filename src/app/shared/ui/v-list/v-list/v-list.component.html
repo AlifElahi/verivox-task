@@ -1,5 +1,6 @@
 <div class="list">
-  <cdk-virtual-scroll-viewport [itemSize]="itemSize"  class="list-container" (scroll)="onScroll($event)">
+  <cdk-virtual-scroll-viewport [itemSize]="itemSize" [minBufferPx]="300" 
+    [maxBufferPx]="600" class="list-container" (scroll)="onScroll($event)">
 
   <div class="list-header">
     <h2>{{ title }}</h2>

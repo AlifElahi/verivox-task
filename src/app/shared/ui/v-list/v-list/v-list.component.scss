@@ -38,6 +38,13 @@
   height: 4px; 
 
 }
+html {
+  scroll-behavior: smooth;
+}
+
+cdk-virtual-scroll-viewport {
+  transition: none;
+}
 
 app-v-dropdown {
   min-width: 180px;
@@ -47,6 +54,7 @@ app-v-dropdown {
 app-custom-component {
   display: flex;
   justify-content: center;
+  margin-bottom:10px ;
 }
 
 .list-container {

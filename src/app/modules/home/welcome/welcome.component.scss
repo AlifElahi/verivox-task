@@ -53,8 +53,19 @@ app-v-button{
 .welcome-page {
   flex-direction: column;
   text-align: center;
-  
+  height: 85%;
 }
+.welcome-text {
+  width: 92%;
+    margin-bottom: 30px;
+    h1 {
+      font-size: 2rem;
+    }
+  
+    p {
+      font-size: .8rem;
+    }
+  }
 }
 @include breakpoint('tablet') {
 
@@ -63,4 +74,5 @@ app-v-button{
   text-align: center;
   
 }
+
 }

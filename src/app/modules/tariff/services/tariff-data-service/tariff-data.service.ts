@@ -31,6 +31,6 @@ export class TariffDataService {
       numberOfCurrentPage: page
     };
 
-    return of(response).pipe(delay(500)); // Simulated API latency
+    return of(response).pipe(delay(200)); // Simulated API latency
   }
 }

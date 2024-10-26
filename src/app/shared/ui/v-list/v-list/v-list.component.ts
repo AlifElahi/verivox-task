@@ -27,7 +27,7 @@ export class VListComponent<T> implements OnInit {
   /**
    * The height of each item
    */
-  @Input() itemSize: number = 200;
+  @Input() itemSize: number =  180;
   /**
    * Whether to enable scroll pagination
    * initial value is false
@@ -92,7 +92,7 @@ export class VListComponent<T> implements OnInit {
 /**
  * Handles the scroll event on the list. 
  * This function checks if the user has scrolled to the bottom of the list 
- * and can be used to trigger actions like loading more data.
+ * and  loading more data if the loader is false.
  * 
  * @param event - The scroll event triggered by the list container.
  */
@@ -101,8 +101,8 @@ export class VListComponent<T> implements OnInit {
     const scrollTop = event.target.scrollTop;
     const scrollHeight = event.target.scrollHeight;
     const clientHeight = event.target.clientHeight;
-    if (scrollTop + clientHeight >= scrollHeight-10) {
-      this.loadDataOnScroll();
+    if (scrollTop + clientHeight >= scrollHeight-8) {
+        this.loadDataOnScroll();
     }
   }
 
