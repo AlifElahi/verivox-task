@@ -42,7 +42,6 @@ export class VButtonComponent implements OnInit {
 
   constructor() {
     // Set the button styles based on the selected type
-    // TODO: Add more button types
     this.buttonStyles = {
       raised: 'mat-raised-button',
       basic: 'mat-mdc-button',
