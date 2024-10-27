@@ -47,15 +47,25 @@ export class CustomComponentComponent implements  OnChanges {
  * instance using the `CustomComponentDirective`'s view container reference and sets
  * the initial `data` and `index` inputs.
  */
-  private createOrUpdateComponentInstance(): void {
+private createOrUpdateComponentInstance(): void {
+  //Error handling for invalid component references.
+  try {
     if (this.componentRef) {
-      // If component exists, update inputs
+      // Update inputs on the existing component instance
       this.componentRef.instance.data = this.item;
       this.componentRef.instance.index = this.index;
     } else {
+      // Create a new component instance
       this.componentRef = this.customComp.viewContainerRef.createComponent<any>(this.component);
-      this.componentRef.instance.data = this.item;
-      this.componentRef.instance.index = this.index;
+      if (this.componentRef.instance) {
+        this.componentRef.instance.data = this.item;
+        this.componentRef.instance.index = this.index;
+      } else {
+        throw new Error('Component instance could not be created');
+      }
     }
+  } catch (error) {
+    console.error('Error creating or updating component instance:', error);
   }
+}
 }
