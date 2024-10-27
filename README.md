@@ -60,6 +60,8 @@ This project is designed to render item cards in a responsive, mobile-first list
 
 - **Module Lazy Loading**: Feature-specific modules are lazy-loaded, improving initial load times and optimizing resource usage by only loading necessary modules when required.
 
+- **Comprehensive Unit Testing**: Most of the components include unit tests (where needed), ensuring that the application is robust, functions as expected, and is easy to maintain over time.
+
 ## Design and Optimization
 
 In this project, I aimed to follow design patterns and principles such as DRY (Don't Repeat Yourself) and modularization. By structuring the code in a reusable and modular way, the project minimizes redundancy, making it more maintainable and efficient. Here are some key aspects:
