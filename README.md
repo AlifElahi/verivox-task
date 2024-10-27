@@ -30,7 +30,7 @@ This project is designed to render item cards in a responsive, mobile-first list
 3. **Run the development server**:
    ```bash
    ng serve
-4. **Run the development server**:
+4. **Go to browser**:
    Visit http://localhost:4200 to view the application.
 
 ##### For Linux Users
@@ -42,6 +42,9 @@ This project is designed to render item cards in a responsive, mobile-first list
 2. **Install dependencies & run the development server:**:
    ```bash
    npm run setup-linux
+3. **Go to browser**:
+   Visit http://localhost:4200 to view the application.
+
 
 ## Project Structure
 
@@ -73,7 +76,11 @@ In this project, I aimed to follow design patterns and principles such as DRY (D
 
 - **Component Factory**: Facilitates dynamic component creation within the list, enhancing extensibility and reuse across different data lists. This helps enforce DRY by reducing redundant code in list item rendering, allowing various components to be rendered flexibly using the same logic.
 
-**SCSS Preprocessing with Variables and Mixins**: A CSS preprocessing system (SCSS) is used to improve styling consistency and maintainability. Variables are defined for reusable values (e.g., colors), and mixins are implemented for media query, making it easy to apply consistent styles across components while simplifying updates and changes.
+- **SCSS Preprocessing with Variables and Mixins**: A CSS preprocessing system (SCSS) is used to improve styling consistency and maintainability. Variables are defined for reusable values (e.g., colors), and mixins are implemented for media query, making it easy to apply consistent styles across components while simplifying updates and changes.
+
+For more details on the architectural decisions made, you can visit the [ADR here](https://github.com/AlifElahi/verivox-task/blob/main/ADR.md).
+
+
 
 
 ## Conclusion
