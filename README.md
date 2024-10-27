@@ -34,7 +34,7 @@ This project is designed to render item cards in a responsive, mobile-first list
 4. **Go to browser**:
    Visit http://localhost:4200 to view the application.
 
-##### If you have docker:**
+#### If you have docker:
 1. **Clone the repository and move to project directory**:
    ```bash
    git clone https://github.com/AlifElahi/verivox-task.git
@@ -46,7 +46,7 @@ This project is designed to render item cards in a responsive, mobile-first list
 4. **Go to browser**:
    Visit http://localhost:4200 to view the application.
 
-##### For Linux Users
+#### For Linux Users
 
 1. **Clone the repository and move to project directory**:
    ```bash
