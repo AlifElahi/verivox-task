@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { By } from '@angular/platform-browser';
 import { VButtonComponent } from '../../../shared/ui/v-button/v-button.component';
 import { VCardComponent } from '../../../shared/ui/v-card/v-card.component';
 import { WelcomeComponent } from './welcome.component';

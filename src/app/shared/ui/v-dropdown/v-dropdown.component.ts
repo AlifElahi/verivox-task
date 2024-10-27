@@ -1,9 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
+/**
+ * The interface for the dropdown option.
+ * This interface defines the label and value of the option.
+ * */
 export interface DropDownOption {
   label: string;
   value: string;
@@ -16,6 +20,11 @@ export interface DropDownOption {
   templateUrl: './v-dropdown.component.html',
   styleUrls: ['./v-dropdown.component.scss'],
 })
+
+/**
+ * Dropdown component for selecting an option from a list.
+ * This is a reuseable dropdown component which is customized as per the needs of the application.
+ */
 export class VDropdownComponent {
   /**
    * The label for the dropdown.
@@ -35,7 +44,7 @@ export class VDropdownComponent {
   /**
    * Output event to notify the parent component of the selected option.
    */
-  @Output() selectionChange = new EventEmitter<string>();
+  selectionChange = output<string>();
 
   /**
    * Emit the selected option.

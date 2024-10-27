@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "setup": "npm install && npm start",
     "start-linux": "node --max_old_space_size=4096 ./node_modules/.bin/ng serve",
     "build-linux": "node --max_old_space_size=4096 ./node_modules/.bin/ng build",
     "watch-linux": "node --max_old_space_size=4096 ./node_modules/.bin/ng build --watch --configuration development",

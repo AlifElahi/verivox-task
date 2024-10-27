@@ -10,6 +10,16 @@ import { SortParams } from '../../../utils/list';
   templateUrl: './v-list.component.html',
   styleUrl: './v-list.component.scss',
 })
+
+/**
+ * The VListComponent is a generic component that displays a list of items using a 
+ * custom component to render each item.It takes a title, a custom component, 
+ * and a list data source as input properties.
+ * 
+ * It provides developers to easily create a list view by reusing this component.
+ * Which will ensure that all tables are similar in look and basic behavior through out the application.
+ * 
+ */
 export class VListComponent<T> implements OnInit {
   /**
    * The title of the list
@@ -17,7 +27,6 @@ export class VListComponent<T> implements OnInit {
   @Input({ required: true }) title!: string;
   /**
    * The custom component to render each item
-   * Required input
    */
   @Input({ required: true }) itemComponent!: unknown; 
   /**
@@ -26,10 +35,21 @@ export class VListComponent<T> implements OnInit {
   @Input({ required: true }) listDataSource!: ListDataSource<T>;
   /**
    * The height of each item
+   * it is used to fine tune the cdk virtual scroll optimization.
    */
   @Input() itemSize: number =  180;
   /**
-   * Whether to enable scroll pagination
+   * The minimum buffer size in pixels
+   * it is used to fine tune the cdk virtual scroll optimization.
+   */
+  @Input() minBufferPx: number =  300;
+  /**
+   * The maximum buffer size in pixels
+   * it is used to fine tune the cdk virtual scroll optimization.
+   */
+  @Input() maxBufferPx: number =  600;
+  /**
+   * Whether to enable scroll pagination or not
    * initial value is false
    * if set true it will fetch data on scroll
    */
@@ -44,12 +64,11 @@ export class VListComponent<T> implements OnInit {
 
   @Input()
   /**
-   * An array of {@link SortConfig} objects to configure the sorting options in the dropdown.
+   * An array of SortConfig objects to configure the sorting options in the dropdown.
    * Each object in the array should have a unique `attribute` value.
    * The `label` property is used to display the text of the option in the dropdown.
    * The `direction` property should be either 'asc' for ascending or 'desc' for descending.
    * The last object in the array will be the default selected option.
-   * 
    * */
   set sortConfig(config: SortConfig[] | undefined) {
     if (config) {
@@ -69,9 +88,9 @@ export class VListComponent<T> implements OnInit {
    * The total number of pages
    */
   numberOfTotalPages!: Signal<number>
-/**
- * Signal that emits `true` if the data is loading, `false` otherwise.
- */
+  /**
+   * Signal that emits `true` if the data is loading, `false` otherwise.
+   */
   isLoading: Signal<boolean> = signal(false);
   /**
    * An array of options for the sorting dropdown.

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, output } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,11 +10,20 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [CommonModule, MatButtonModule],
   styleUrls: ['./v-button.component.scss'],
 })
+
+/**
+ * Component for a custom Angular Material button.
+ * This is a reuseable component with a  Angular Material button customized as per application needs .
+ * @param type Type of the button.
+ * @param disabled Whether the button is disabled.
+ * @param action Event emitter to notify the parent component when the button is clicked.
+ * 
+ */
 export class VButtonComponent implements OnInit {
   /**
-   * The type of Angular Material button ['raised', 'flat', 'basic',...], default is 'flat'.
+   * The type of Angular Material button ['raised', 'basic',...], default is 'basic'.
    */
-  @Input() type: keyof typeof VButtonComponent.prototype.buttonStyles = 'flat';
+  @Input() type: keyof typeof VButtonComponent.prototype.buttonStyles = 'basic';
 
   /**
    * Whether the button is disabled.
@@ -24,7 +33,7 @@ export class VButtonComponent implements OnInit {
   /**
    * Event emitter to notify the parent component when the button is clicked.
    */
-  @Output() action = new EventEmitter<void>();
+  action = output<void>();
 
   /**
    * List of button styles (directives and classes) based on the selected type.
@@ -32,11 +41,11 @@ export class VButtonComponent implements OnInit {
   buttonStyles: { [key: string]: string };
 
   constructor() {
+    // Set the button styles based on the selected type
+    // TODO: Add more button types
     this.buttonStyles = {
       raised: 'mat-raised-button',
       basic: 'mat-mdc-button',
-      flat: 'mat-mdc-unelevated-button',
-      stroked: 'mat-mdc-outlined-button',
     };
   }
 

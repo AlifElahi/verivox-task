@@ -12,14 +12,14 @@
   height: 70px;
   display: flex;
   align-items: center;
-  background-color: #f8f9fa; /* Light gray background */
+  background-color: $tool-bar; 
   color: $primary-orange;
   font-weight: 600;
   min-width: 300px;
   z-index: 400;
   box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.2);
+  img {
+    margin: 0 16px;
+  }
 }
 
-.toolbar img {
-  margin: 0 16px;
-}

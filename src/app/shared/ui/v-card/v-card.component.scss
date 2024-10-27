@@ -1,5 +1,5 @@
 @import '../../../../styles/colors';
-
+/* Card styles */
 .v-card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 4px;
@@ -12,7 +12,7 @@
     flex-grow: 1;
   }
 }
-.title-styled {
+.title-style {
   font-size: 1rem;
   margin-bottom: 6px;
   padding: 10px;

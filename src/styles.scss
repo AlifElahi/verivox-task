@@ -1,12 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
 
 @import './styles/colors';
 
+//Custom font
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 
-// Define custom primary palette with required shades
+//custom primary palette with orange shades, to modify the theme.
 $primary-orange: mat.define-palette(
   (
     50: #fff3e0,
@@ -51,6 +51,7 @@ $custom-theme: mat.define-light-theme(
 html,
 body {
   height: 100%;
+  scroll-behavior: smooth;
 }
 body {
   margin: 0;

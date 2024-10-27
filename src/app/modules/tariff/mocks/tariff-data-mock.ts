@@ -1,5 +1,10 @@
 import { Tariff } from '../models/tariff.model';
 
+/**
+ * This is a mock data for testing
+ * 
+ */
+
 export const mockTariffData: Tariff[] = [
   {
     index: 1,

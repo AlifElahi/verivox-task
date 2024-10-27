@@ -9,21 +9,19 @@
 
 app-v-header {
   flex-shrink: 0;
-  height: 60px; // Fixed height for header (adjust as needed)
+  height: 60px; // Fixed height for header 
   z-index: 10; // Keep the header above content
   position: relative;
   margin-bottom: 5px;
 }
 #main-content-container {
-  flex-grow: 1; // Allow the content to grow and fill the remaining space  // Add padding equal to the header height
-  overflow:hidden;
+  flex-grow: 1; // Allow the content to grow and fill the remaining space 
   height: 90vh;
   background-color: $blue-light;
   scrollbar-width: none;  /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
-
-}
-
-#main-content-container ::-webkit-scrollbar { /* Chrome, Safari, Opera */
-  display: none;
+  &::-webkit-scrollbar { /* Chrome, Safari, Opera */
+    display: none;
+  }
+  
 }
