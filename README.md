@@ -72,6 +72,8 @@ In this project, I aimed to follow design patterns and principles such as DRY (D
 
 - **Component Factory**: Facilitates dynamic component creation within the list, enhancing extensibility and reuse across different data lists. This helps enforce DRY by reducing redundant code in list item rendering, allowing various components to be rendered flexibly using the same logic.
 
+**SCSS Preprocessing with Variables and Mixins**: A CSS preprocessing system (SCSS) is used to improve styling consistency and maintainability. Variables are defined for reusable values (e.g., colors), and mixins are implemented for media query, making it easy to apply consistent styles across components while simplifying updates and changes.
+
 
 ## Conclusion
 
