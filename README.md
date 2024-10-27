@@ -9,6 +9,7 @@ This project is designed to render item cards in a responsive, mobile-first list
 - [Project Structure](#project-structure)
 - [Key Features](#key-features)
 - [Design and Optimization](#design-and-optimization)
+- [Demo](#demo)
 - [Conclusion](#conclusion)
 
 ## Getting Started
@@ -82,6 +83,9 @@ For more details on the architectural decisions made, you can visit the [ADR her
 
 
 
+## Demo
+
+You can view a live demo of the project at: [https://voxinterview.surge.sh/](https://voxinterview.surge.sh/)
 
 ## Conclusion
 
