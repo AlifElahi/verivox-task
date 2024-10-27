@@ -1,6 +1,7 @@
 # Responsive Item List Renderer (verivox-interview)
 
-This project is designed to render item cards in a responsive, mobile-first list layout, using optimized DOM handling for smooth and efficient rendering of large datasets. Key design principles include reusability, modular architecture, and adherence to design patterns to maintain a clean and maintainable codebase.
+This project is designed to render item cards in a responsive, mobile-first list layout, using optimized DOM handling for smooth and efficient rendering of large datasets. The list includes features such as sorting and scroll-based pagination, enhancing user experience and interactivity for large collections. Key design principles include reusability, modular architecture, and adherence to design patterns to maintain a clean and maintainable codebase.
+
 
 ## Table of Contents
 
