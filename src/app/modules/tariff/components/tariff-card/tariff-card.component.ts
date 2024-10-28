@@ -25,4 +25,15 @@ export class TariffCardComponent {
    */
   @Input({ required: true }) index!: number; 
 
+
+  /**
+   * Log a message to the console when the tariff card is clicked
+   * Dumb action
+   * @param tariffName - The name of the tariff that was clicked
+   */
+  onClick(tariffName: string): void {
+    console.log(`${tariffName} clicked`);
+    
+  }
+
 }
