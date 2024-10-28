@@ -11,7 +11,12 @@ export class TariffDataService {
   private readonly totalItems = 600; 
   private readonly itemsPerPage = 10;
 
-  // Method to simulate an API call that fetches tariffs for a given page
+  
+  /**
+   * Retrieves a page of Tariff objects from a simulated API, with a latency of 200ms.
+   * @param page - The page number to retrieve.
+   * @returns An Observable that resolves to a TariffFetchResponse containing the page of Tariffs.
+   */
   getTariffs(page: number): Observable<TariffFetchResponse> {
     const tariffs = Array.from({ length: this.itemsPerPage }, (_, index) => ({
       index: (page - 1) * this.itemsPerPage + index + 1,
